@@ -1,0 +1,9 @@
+{
+	"id": "obsidian-g-sync",
+	"name": "g-Sync",
+	"version": "0.2.0",
+	"minAppVersion": "1.11.0",
+	"description": "Bidirectional incremental Markdown sync between Obsidian Vault and Google Drive with three-way diff, conflict preservation, and full observability.",
+	"author": "KrayZerld & Geminyan",
+	"isDesktopOnly": true
+}

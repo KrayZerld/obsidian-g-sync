@@ -1,0 +1,452 @@
+/* =========================================================
+   Obsidian g-Sync — Native Obsidian 1.11+ Design System
+   ========================================================= */
+
+/* ---------- Status Bar "G" Widget (native .mod-clickable) ---------- */
+.gsync-status-bar-item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-muted);
+}
+
+.gsync-status-bar-item.is-idle {
+	color: var(--text-muted);
+}
+
+.gsync-status-bar-item.is-error,
+.gsync-status-bar-item.is-unauthenticated {
+	color: var(--text-error);
+}
+
+.gsync-status-bar-item.is-syncing {
+	color: var(--interactive-accent);
+	animation: gsync-breathe 1.35s ease-in-out infinite;
+}
+
+@keyframes gsync-breathe {
+	0%,
+	100% {
+		opacity: 0.35;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+/* ---------- Settings Container & Underline Tabs ---------- */
+.gsync-settings .gsync-tabs {
+	display: flex;
+	gap: 4px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	margin-bottom: 16px;
+}
+
+.gsync-settings .gsync-tab {
+	background: transparent !important;
+	border: none !important;
+	border-bottom: 2px solid transparent !important;
+	box-shadow: none !important;
+	border-radius: 0;
+	height: auto !important;
+	padding: 8px 16px;
+	color: var(--text-muted);
+	cursor: pointer;
+	font-size: var(--font-ui-medium);
+	font-weight: 400;
+	transition: color 120ms ease, border-color 120ms ease;
+}
+
+.gsync-settings .gsync-tab:hover {
+	background: transparent !important;
+	color: var(--text-normal);
+}
+
+.gsync-settings .gsync-tab.is-active {
+	color: var(--interactive-accent);
+	border-bottom-color: var(--interactive-accent) !important;
+	font-weight: 500;
+}
+
+.gsync-settings .setting-group {
+	margin-bottom: 18px;
+}
+
+.gsync-settings .gsync-heading-meta {
+	margin-left: 8px;
+	font-size: var(--font-ui-smaller);
+	font-weight: 400;
+	color: var(--text-faint);
+}
+
+/* ---------- Inputs & Inline Validation ---------- */
+.gsync-settings .gsync-text-input {
+	min-width: 240px;
+}
+
+.gsync-settings .gsync-text-input::placeholder,
+.gsync-settings .gsync-number-input::placeholder {
+	color: var(--text-faint);
+	opacity: 0.65;
+}
+
+.gsync-settings .gsync-number-input {
+	width: 110px;
+	text-align: right;
+}
+
+.gsync-settings .gsync-inline-error {
+	margin-top: 4px;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-error);
+}
+
+.gsync-settings .is-hidden {
+	display: none !important;
+}
+
+.gsync-settings .gsync-auth-ok {
+	color: var(--text-success, var(--color-green));
+}
+
+.gsync-settings .gsync-auth-expired {
+	color: var(--text-error);
+}
+
+/* ---------- Native ExtraButton Enhancements ---------- */
+.gsync-settings .gsync-danger-icon:hover:not(.is-disabled) {
+	color: var(--text-error);
+}
+
+.gsync-settings .gsync-sync-refresh-btn.is-loading svg {
+	animation: gsync-spin 0.9s linear infinite;
+}
+
+@keyframes gsync-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ---------- Ignore Tab Item List & Path Picker Modal ---------- */
+.gsync-settings .gsync-ignore-row {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.gsync-settings .gsync-ignore-row.is-builtin .gsync-ignore-path {
+	color: var(--text-muted);
+}
+
+.gsync-settings .gsync-ignore-path {
+	font-family:
+		var(--font-monospace-override, "Cascadia Mono"),
+		var(--font-monospace-theme, "Consolas"),
+		"Cascadia Mono",
+		"SFMono-Regular",
+		"Consolas",
+		"Menlo",
+		"Monaco",
+		var(--font-text),
+		var(--font-interface),
+		monospace;
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+	word-break: break-all;
+}
+
+.gsync-settings .gsync-ignore-builtin-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--size-2-2, 4px);
+	color: var(--text-faint);
+	--icon-size: 16px;
+	user-select: none;
+}
+
+.gsync-ignore-modal .gsync-modal-input {
+	min-width: 240px;
+}
+
+.gsync-ignore-modal .gsync-modal-error {
+	display: none;
+	margin-top: 8px;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-error);
+}
+
+.gsync-ignore-modal .gsync-modal-error.is-visible {
+	display: block;
+}
+
+.gsync-suggest-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.gsync-suggest-icon {
+	display: inline-flex;
+	align-items: center;
+	color: var(--text-muted);
+	--icon-size: 14px;
+	flex-shrink: 0;
+}
+
+.gsync-suggest-path {
+	font-family:
+		var(--font-monospace-override, "Cascadia Mono"),
+		var(--font-monospace-theme, "Consolas"),
+		"Cascadia Mono",
+		"Consolas",
+		var(--font-text),
+		var(--font-interface),
+		monospace;
+	font-size: var(--font-ui-small);
+}
+
+/* ---------- Log Tab & Collapsible Log List ---------- */
+.gsync-settings .gsync-log-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.gsync-settings .gsync-log-empty {
+	padding: 24px 16px;
+	text-align: center;
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+}
+
+.gsync-settings .gsync-log-item {
+	border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 65%, transparent);
+}
+
+.gsync-settings .gsync-log-item:last-child {
+	border-bottom: none;
+}
+
+.gsync-settings .gsync-log-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 12px;
+	font-size: var(--font-ui-small);
+}
+
+.gsync-settings .gsync-log-header.is-clickable {
+	cursor: pointer;
+}
+
+.gsync-settings .gsync-log-header.is-clickable:hover {
+	background: var(--background-modifier-hover);
+}
+
+.gsync-settings .gsync-log-chevron {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 14px;
+	color: var(--text-faint);
+	--icon-size: 14px;
+	flex-shrink: 0;
+	transition: transform 140ms ease;
+}
+
+.gsync-settings .gsync-log-item.is-expanded .gsync-log-chevron {
+	transform: rotate(90deg);
+	color: var(--text-muted);
+}
+
+.gsync-settings .gsync-log-time {
+	font-family:
+		var(--font-monospace-override, "Cascadia Mono"),
+		var(--font-monospace-theme, "Consolas"),
+		"Cascadia Mono",
+		"Consolas",
+		var(--font-text),
+		var(--font-interface),
+		monospace;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+.gsync-settings .gsync-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 1px 6px;
+	border-radius: var(--radius-s);
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.4;
+	flex-shrink: 0;
+}
+
+.gsync-settings .gsync-badge-trigger {
+	background: var(--background-modifier-hover);
+	color: var(--text-muted);
+}
+
+.gsync-settings .gsync-badge-level.is-info {
+	background: color-mix(in srgb, var(--interactive-accent) 14%, transparent);
+	color: var(--interactive-accent);
+}
+
+.gsync-settings .gsync-badge-level.is-success {
+	background: color-mix(in srgb, var(--text-success, var(--color-green)) 15%, transparent);
+	color: var(--text-success, var(--color-green));
+}
+
+.gsync-settings .gsync-badge-level.is-warn {
+	background: color-mix(in srgb, var(--text-warning, var(--color-orange)) 16%, transparent);
+	color: var(--text-warning, var(--color-orange));
+}
+
+.gsync-settings .gsync-badge-level.is-error {
+	background: color-mix(in srgb, var(--text-error) 15%, transparent);
+	color: var(--text-error);
+}
+
+.gsync-settings .gsync-log-summary {
+	flex: 1;
+	min-width: 0;
+	color: var(--text-normal);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.gsync-settings .gsync-log-counts {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-family:
+		var(--font-monospace-override, "Cascadia Mono"),
+		var(--font-monospace-theme, "Consolas"),
+		"Cascadia Mono",
+		"Consolas",
+		var(--font-text),
+		var(--font-interface),
+		monospace;
+	font-size: var(--font-ui-smaller);
+	font-variant-numeric: tabular-nums;
+}
+
+.gsync-settings .gsync-count-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	color: var(--text-normal);
+}
+
+.gsync-settings .gsync-count-icon {
+	display: inline-flex;
+	align-items: center;
+	--icon-size: 13px;
+}
+
+.gsync-settings .gsync-count-item.is-zero {
+	color: var(--text-faint);
+}
+
+.gsync-settings .gsync-count-item.is-conflict {
+	color: var(--text-warning, var(--color-orange));
+	font-weight: 500;
+}
+
+.gsync-settings .gsync-count-item.is-error {
+	color: var(--text-error);
+	font-weight: 500;
+}
+
+.gsync-settings .gsync-count-sep {
+	color: var(--background-modifier-border);
+	user-select: none;
+}
+
+.gsync-settings .gsync-log-duration {
+	font-size: var(--font-ui-smaller);
+	color: var(--text-faint);
+	flex-shrink: 0;
+}
+
+.gsync-settings .gsync-log-details {
+	padding: 6px 14px 12px 34px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	border-top: 1px dashed color-mix(in srgb, var(--background-modifier-border) 55%, transparent);
+	background: color-mix(in srgb, var(--background-secondary) 50%, transparent);
+}
+
+.gsync-settings .gsync-log-detail-row {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	font-size: var(--font-ui-smaller);
+	line-height: 1.5;
+	color: var(--text-muted);
+}
+
+.gsync-settings .gsync-detail-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	transform: translateY(-1px);
+	background: var(--text-faint);
+}
+
+.gsync-settings .gsync-detail-dot.is-success {
+	background: var(--text-success, var(--color-green));
+}
+
+.gsync-settings .gsync-detail-dot.is-warn {
+	background: var(--text-warning, var(--color-orange));
+}
+
+.gsync-settings .gsync-detail-dot.is-error {
+	background: var(--text-error);
+}
+
+.gsync-settings .gsync-detail-dot.is-info {
+	background: var(--interactive-accent);
+}
+
+.gsync-settings .gsync-detail-path {
+	font-family:
+		var(--font-monospace-override, "Cascadia Mono"),
+		var(--font-monospace-theme, "Consolas"),
+		"Cascadia Mono",
+		"Consolas",
+		var(--font-text),
+		var(--font-interface),
+		monospace;
+	color: var(--text-normal);
+	word-break: break-all;
+	flex-shrink: 0;
+}
+
+.gsync-settings .gsync-detail-msg {
+	min-width: 0;
+	word-break: break-word;
+}
+
+.gsync-settings .gsync-log-detail-row.is-error .gsync-detail-msg {
+	color: var(--text-error);
+}
+
+.gsync-settings .gsync-log-detail-row.is-warn .gsync-detail-msg {
+	color: var(--text-warning, var(--color-orange));
+}
+
+/* ---------- Confirm Modal ---------- */
+.gsync-confirm-message {
+	color: var(--text-muted);
+	line-height: 1.6;
+}

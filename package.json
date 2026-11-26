@@ -1,0 +1,30 @@
+{
+	"name": "obsidian-g-sync",
+	"version": "0.2.0",
+	"author": "KrayZerld & Geminyan",
+	"description": "Bidirectional incremental Markdown sync between Obsidian Vault and Google Drive.",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"typecheck": "tsc -noEmit -skipLibCheck",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"keywords": [
+		"obsidian",
+		"plugin",
+		"sync",
+		"google-drive",
+		"markdown"
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^22.10.0",
+		"builtin-modules": "^4.0.0",
+		"esbuild": "^0.25.0",
+		"obsidian": "latest",
+		"typescript": "^5.7.2",
+		"vitest": "^3.0.5"
+	}
+}
